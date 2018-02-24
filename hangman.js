@@ -42,8 +42,6 @@ var wordBank = [
 var wordArray = [];
 var rightGuess = [];
 var wrongGuess = [];
-var lettersInWord = [];
-var numOfLetters = 0;
 //Choose word randomly
 var compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
 //Test compGuess
@@ -53,7 +51,7 @@ console.log(compGuess);
 for (var i = 0; i < compGuess.length; i++) {
   wordArray[i] = " _ ";
 }
-//Test wordArray
+//Test wordArray length
 console.log(wordArray);
 
 //Get user's guessr
