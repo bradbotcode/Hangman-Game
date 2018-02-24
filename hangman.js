@@ -38,49 +38,38 @@ var wordBank = [
   "project",
   "sidepull"
 ];
-//Choose word randomly
-var underScore = [];
+//Variable to be used
+var wordArray = [];
 var rightGuess = [];
 var wrongGuess = [];
 var lettersInWord = [];
 var numOfLetters = 0;
-var rightGuessCount = 0;
-var wrongGuessCount = 0;
-
+//Choose word randomly
 var compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
+//Test compGuess
 console.log(compGuess);
 
-lettersInWord = compGuess.split("");
-
-numOfLetters = lettersInWord.length;
-
-console.log(numOfLetters);
-
 //Modify number of underscores based on length of word
-var underScore = [];
-function generateUnderscore() {
-  for (var i = 0; i < compGuess.length; i++) {
-    underScore[i] = "_";
-  }
-  return underScore;
+for (var i = 0; i < compGuess.length; i++) {
+  wordArray[i] = " _ ";
 }
-console.log(generateUnderscore());
+//Test wordArray
+console.log(wordArray);
 
-//Get user's guess
+//Get user's guessr
 document.onkeyup = function(event) {
   var userGuess = event.key.toLowerCase();
-  //If userGuess is a part of the word from compGuess, put it in rightGuess array
 
+  //If userGuess is a part of the compGuess word, fill in wordArray "_"(s) accordingly and add letter to rightGuess array.
   for (j = 0; j < compGuess.length; j++) {
     if (compGuess[j] === userGuess) {
-      underScore[j] = userGuess;
+      wordArray[j] = userGuess;
       rightGuess.push(userGuess);
-      console.log(underScore, rightGuess);
-      //Else, put it in wrongGuess array
-    } else {
-      wrongGuess.push(userGuess);
-      console.log(wrongGuess);
+      console.log(wordArray, rightGuess);
     }
   }
-  //Replace underScore with userGuess, according to index of rightGuess, corresponding with compGuess
+
+  var html = "<div>" + wordArray + "</div>";
+
+  document.getElementById("underscore").innerHTML = html;
 };
