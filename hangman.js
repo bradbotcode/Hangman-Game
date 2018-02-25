@@ -1,4 +1,4 @@
-//Create an array of words
+//Array of words.
 var wordBank = [
   "approach",
   "anchor",
@@ -38,6 +38,7 @@ var wordBank = [
   "project",
   "sidepull"
 ];
+
 //Establishing variables.
 var wordArray = [];
 var wrongGuess = [];
@@ -48,8 +49,6 @@ var correctLetter = 0;
 //Computer chooses word from wordBank, randomly.
 function startGame() {
   compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
-
-  //Test compGuess.
   console.log(compGuess);
 
   //Create the necessary amount of underscores for the compGuess word.
@@ -58,7 +57,7 @@ function startGame() {
     console.log(wordArray);
   }
 
-  //Print underscors and total guesses left to screen for start of game.
+  //Print underscores and guessesLeft to screen for start of game.
   document.getElementById("wordArray").textContent = wordArray.join(" ");
   document.getElementById("guessesLeft").textContent = guessesLeft;
 }
@@ -66,11 +65,11 @@ function startGame() {
 //Call startGame function.
 startGame();
 
-//Capture players's keystroke as a letter guess.
+//Capture players's keystroke and store it as, playerGuess.
 document.onkeyup = function(event) {
   var playerGuess = event.key.toLowerCase();
 
-  //If userGuess is a part of the compGuess word, replace underscore in wordArray accordingly.
+  //If playerGuess is a part of the compGuess word, replace underscore in wordArray accordingly.
   function guessWork() {
     for (j = 0; j < compGuess.length; j++) {
       if (compGuess[j] === playerGuess) {
@@ -81,7 +80,8 @@ document.onkeyup = function(event) {
       }
     }
 
-    //If userGuess is not a part of compGuess word, add it to wrongGuess array. If userGuess is same as a letter already in wronGuess array, alert player and do not deduct from guessesLeft.
+    //If playerGuess is not a part of compGuess word, add it to wrongGuess array.
+    //If playerGuess is already in wrongGuess array, alert player and do not deduct from guessesLeft.
     if (wrongGuess.indexOf(playerGuess) > -1) {
       alert("You already guessed this!");
     } else if (wordArray.indexOf(playerGuess) < 0) {
@@ -103,6 +103,8 @@ document.onkeyup = function(event) {
     alert("you lose");
     location.reload();
   }
+
+  //Print necessary variables to screen as game occurs.
   document.getElementById("wordArray").textContent = wordArray.join(" ");
   document.getElementById("wrongGuesses").textContent = wrongGuess.join(" , ");
   document.getElementById("guessesLeft").textContent = guessesLeft;
