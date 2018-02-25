@@ -104,7 +104,7 @@ document.onkeyup = function(event) {
     location.reload();
   }
 
-  //Print necessary variables to screen as game occurs.
+  //Print necessary variables to screen as gameplay occurs.
   document.getElementById("wordArray").textContent = wordArray.join(" ");
   document.getElementById("wrongGuesses").textContent = wrongGuess.join(" , ");
   document.getElementById("guessesLeft").textContent = guessesLeft;
