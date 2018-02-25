@@ -52,7 +52,7 @@ function startGame() {
   console.log(compGuess);
 
   //Create the necessary amount of underscores for the compGuess word.
-  for (var i = 0; i < compGuess.length; i++) {
+  for (i = 0; i < compGuess.length; i++) {
     wordArray.push(" _ ");
     console.log(wordArray);
   }
