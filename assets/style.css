@@ -1,6 +1,6 @@
 header {
-  height: 300px;
-  width: 80%;
+  height: 100px;
+  width: 50%;
   border: 2px solid black;
   font-size: 20px;
   text-align: center;
@@ -8,31 +8,24 @@ header {
   padding-top: 10px;
 }
 
-#underscore {
-  height: 150px;
-  width: 80%;
+.box1,
+.box2,
+.box3 {
+  height: 200px;
+  width: 40%;
   border: 2px solid black;
-  font-size: 90px;
-  text-align: center;
+  font-size: 30px;
+  text-align: left;
   margin: auto;
+  padding: 20px;
 }
 
-#rightGuess {
-  height: 150px;
-  width: 80%;
-  border: 2px solid black;
-  font-size: 20px;
+#wordArray,
+#guessesLeft,
+#wrongGuesses {
   text-align: center;
-  margin: auto;
-  padding-top: 10px;
 }
 
-.wrongGuess {
-  height: 150px;
-  width: 80%;
-  border: 2px solid black;
-  font-size: 20px;
+p {
   text-align: center;
-  margin: auto;
-  padding-top: 10px;
 }

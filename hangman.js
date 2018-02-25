@@ -40,34 +40,61 @@ var wordBank = [
 ];
 //Variable to be used
 var wordArray = [];
-var rightGuess = [];
 var wrongGuess = [];
+var guessesLeft = 11;
+var compGuess;
+var correctLetter = 0;
+
 //Choose word randomly
-var compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
-//Test compGuess
-console.log(compGuess);
+function startGame() {
+  compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
+  //Test compGuess
+  console.log(compGuess);
 
-//Modify number of underscores based on length of word
-for (var i = 0; i < compGuess.length; i++) {
-  wordArray[i] = " _ ";
+  for (var i = 0; i < compGuess.length; i++) {
+    wordArray.push(" _ ");
+    console.log(wordArray);
+  }
+
+  document.getElementById("wordArray").textContent = wordArray.join(" ");
+  document.getElementById("wrongGuesses").textContent = wrongGuess;
+  document.getElementById("guessesLeft").textContent = guessesLeft;
 }
-//Test wordArray length
-console.log(wordArray);
+startGame();
+//Get user's guess
 
-//Get user's guessr
 document.onkeyup = function(event) {
   var userGuess = event.key.toLowerCase();
 
   //If userGuess is a part of the compGuess word, fill in wordArray "_"(s) accordingly and add letter to rightGuess array.
-  for (j = 0; j < compGuess.length; j++) {
-    if (compGuess[j] === userGuess) {
-      wordArray[j] = userGuess;
-      rightGuess.push(userGuess);
-      console.log(wordArray, rightGuess);
+
+  function guessWork() {
+    for (j = 0; j < compGuess.length; j++) {
+      if (compGuess[j] === userGuess) {
+        wordArray[j] = userGuess;
+        guessesLeft--;
+        correctLetter++;
+        console.log(wordArray);
+      }
+    }
+    if (wrongGuess.indexOf(userGuess) > -1) {
+      alert("You already guessed this!");
+    } else if (wordArray.indexOf(userGuess) < 0) {
+      wrongGuess.push(userGuess);
+      guessesLeft--;
     }
   }
+  guessWork();
 
-  var html = "<div>" + wordArray + "</div>";
+  if (correctLetter === compGuess.length) {
+    alert("you win");
+    location.reload();
+  } else if (guessesLeft === 0) {
+    alert("you lose");
+    location.reload();
+  }
 
-  document.getElementById("underscore").innerHTML = html;
+  document.getElementById("wordArray").textContent = wordArray.join(" ");
+  document.getElementById("wrongGuesses").textContent = wrongGuess.join(" , ");
+  document.getElementById("guessesLeft").textContent = guessesLeft;
 };
