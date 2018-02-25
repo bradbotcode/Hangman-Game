@@ -38,62 +38,71 @@ var wordBank = [
   "project",
   "sidepull"
 ];
-//Variable to be used
+//Establishing variables.
 var wordArray = [];
 var wrongGuess = [];
 var guessesLeft = 11;
 var compGuess;
 var correctLetter = 0;
 
-//Choose word randomly
+//Computer chooses word from wordBank, randomly.
 function startGame() {
   compGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
-  //Test compGuess
+
+  //Test compGuess.
   console.log(compGuess);
 
+  //Create the necessary amount of underscores for the compGuess word.
   for (var i = 0; i < compGuess.length; i++) {
     wordArray.push(" _ ");
     console.log(wordArray);
   }
 
+  //Print underscors and total guesses left to screen for start of game.
   document.getElementById("wordArray").textContent = wordArray.join(" ");
-  document.getElementById("wrongGuesses").textContent = wrongGuess;
   document.getElementById("guessesLeft").textContent = guessesLeft;
 }
+
+//Call startGame function.
 startGame();
-//Get user's guess
 
+//Capture players's keystroke as a letter guess.
 document.onkeyup = function(event) {
-  var userGuess = event.key.toLowerCase();
+  var playerGuess = event.key.toLowerCase();
 
-  //If userGuess is a part of the compGuess word, fill in wordArray "_"(s) accordingly and add letter to rightGuess array.
-
+  //If userGuess is a part of the compGuess word, replace underscore in wordArray accordingly.
   function guessWork() {
     for (j = 0; j < compGuess.length; j++) {
-      if (compGuess[j] === userGuess) {
-        wordArray[j] = userGuess;
+      if (compGuess[j] === playerGuess) {
+        wordArray[j] = playerGuess;
         guessesLeft--;
         correctLetter++;
         console.log(wordArray);
       }
     }
-    if (wrongGuess.indexOf(userGuess) > -1) {
+
+    //If userGuess is not a part of compGuess word, add it to wrongGuess array. If userGuess is same as a letter already in wronGuess array, alert player and do not deduct from guessesLeft.
+    if (wrongGuess.indexOf(playerGuess) > -1) {
       alert("You already guessed this!");
-    } else if (wordArray.indexOf(userGuess) < 0) {
-      wrongGuess.push(userGuess);
+    } else if (wordArray.indexOf(playerGuess) < 0) {
+      wrongGuess.push(playerGuess);
       guessesLeft--;
     }
   }
+
+  //Call guessWork function.
   guessWork();
 
+  //If correctLetter equals the length of compGuess, alert the player that they've won and reset game.
   if (correctLetter === compGuess.length) {
     alert("you win");
     location.reload();
+
+    //Else, if guessesLeft equals 0, alert the player that they've lost and reset game.
   } else if (guessesLeft === 0) {
     alert("you lose");
     location.reload();
   }
-
   document.getElementById("wordArray").textContent = wordArray.join(" ");
   document.getElementById("wrongGuesses").textContent = wrongGuess.join(" , ");
   document.getElementById("guessesLeft").textContent = guessesLeft;
