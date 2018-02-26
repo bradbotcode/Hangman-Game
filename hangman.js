@@ -41,7 +41,7 @@ var wordBank = [
 //Establishing variables.
 var wordArray = [];
 var wrongGuess = [];
-var guessesLeft = 13;
+var guessesLeft = 7;
 var compGuess;
 var correctLetter = 0;
 
@@ -69,11 +69,11 @@ document.onkeyup = function(event) {
   var playerGuess = event.key.toLowerCase();
 
   //If playerGuess is a part of the compGuess word, replace underscore in wordArray accordingly.
+  //Guesses are not deducted if player guesses a correct letter.
   function guessWork() {
     for (j = 0; j < compGuess.length; j++) {
       if (compGuess[j] === playerGuess) {
         wordArray[j] = playerGuess;
-        guessesLeft--;
         correctLetter++;
         console.log(wordArray);
       }
