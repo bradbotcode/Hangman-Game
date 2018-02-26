@@ -5,41 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/reset.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <title>Hangman</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-full">
         <br />
-        <header>
-            <h1>Hangman Game</h1>
-            <br />
-            <h3>"Climbing Terms"</h3>
-        </header>
         <br />
-        <div class="box1">
-            <p>Word you're guessing:</p>
-            <br />
-            <p id="wordArray">---</p>
-        </div>
+        <br />
+        <br />
+        <div class="container-fluid">
+            <div class=" row ">
+                <div class="col-2 ">
+                </div>
+                <div class="col-8 ">
+                    <div class="jumbotron jumbotron-fluid ">
+                        <div class="container ">
+                            <div>
+                                <div class="wyg ">WORD you're guessing:</div>
+                                <br />
+                                <p>(theme: rock climbing terms)</p>
+                                <p id="wordArray">---</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 ">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-4 ">
 
-        <div class="box2">
-            <p>Wrong guesses:</p>
-            <br />
-            <p id="wrongGuesses"></p>
-        </div>
-
-        <div class="box3">
-            <p>Guesses left:</p>
-            <br />
-            <p id="guessesLeft"></p>
-
+                </div>
+                <div class="col-2 ">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <div class="card-body ">
+                            <div class="box3 ">
+                                <p>Guesses Left:</p>
+                                <p id="guessesLeft"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 ">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <div class="card-body ">
+                            <div class="box2 ">
+                                <p>Wrong Guesses:</p>
+                                <p id="wrongGuesses"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 ">
+                </div>
+            </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="hangman.js"></script>
+
+    <script type="text/javascript " src="hangman.js "></script>
 </body>
 
 </html>
