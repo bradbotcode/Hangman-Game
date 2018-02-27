@@ -94,13 +94,12 @@ document.onkeyup = function(event) {
 
   //If correctLetter equals the length of compGuess, alert the player that they've won and reset game.
   if (correctLetter === compGuess.length) {
-    alert("WINNER!");
+    alert("WINNER! The word was: " + compGuess);
     location.reload();
 
     //Else, if guessesLeft equals 0, alert the player that they've lost and reset game.
   } else if (guessesLeft === 0) {
-    alert("YOU LOSE!");
-    alert("The word was: " + compGuess);
+    alert("YOU LOSE! The word was: " + compGuess);
     location.reload();
   }
 
